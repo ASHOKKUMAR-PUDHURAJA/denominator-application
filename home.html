@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<title>Denomination Calculator</title>
+		<style>
+		
+			h1{
+				color:red;
+				text-align: center;
+			}
+			#netamount
+			{
+				color:green;
+				margin-left: 70%;
+			}
+			#calc
+			{
+				color:rebeccapurple;
+				margin-left: 70%;
+			}
+			h3{
+				margin-left: 50%;
+			}
+			label
+			{
+				margin-left: 30%;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 25px;
+				color:blueviolet;
+				font-weight:bold;
+			}
+			
+			table
+			{
+				margin-left: 40%;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 20px;
+				border: 2px solid;
+				border-spacing: 1cm;
+				background-color: navajowhite;
+				font-weight: bold;
+			}
+			h3
+			{
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 25px;
+				color:yellow;
+			}
+			h2{
+				font-size: 50px;
+			}
+			body{
+				background-image: url("image.jpg");
+			}
+			
+			h1{
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	
+			<h1> Calculate Your Amount</h1>
+		<h3>Net Amount:</h3>  <h2 id="netamount"></h2> </br></br>
+		<h3>Calculated: <h2 id="calc"></h2></h3> 
+		<h3 id="short"></h3>	
+	</br></br></br></br>
+		<label>Enter the Amount: </label><input type="number" id="amount" value="0" oninput="call();return false"></br></br></br></br>
+		<form>
+		<table>
+			<tr><th>Denomination</th><th></th><th>Amount</th></tr>
+			<tr><td>2000</td><td>X</td><td><input type="number" id="twothousand" value="0" oninput="call();return false"></td></tr>
+			<tr><td>500  </td><td>X</td><td><input type="number" id="fivehundred"  oninput="call();return false" value="0" ></td></tr>
+			<tr><td>200  </td><td>X</td><td><input type="number" id="twohundred" oninput="call();return false" value="0"></td></tr>
+			<tr><td>100  </td><td>X</td><td><input type="number" id="hundred" oninput="call();return false" value="0"></td></tr>
+			<tr><td>50  </td><td>X</td><td><input type="number" id="fifty" oninput="call();return false" value="0"></td></tr>
+			<tr><td>20  </td><td>X</td><td><input type="number" id="twenty" oninput="call();return false" value="0"></td></tr>
+			<tr><td>10  </td><td>X</td><td><input type="number" id="ten" oninput="call();return false" value="0"></td></tr>
+			<tr><td>5  </td><td>X</td><td><input type="number" id="five"  oninput="call();return false" value="0"></td></tr>
+			<tr><td>2  </td><td>X</td><td><input type="number" id="two" oninput="call();return false" value="0"></td></tr>
+			<tr><td>1  </td><td>X</td><td><input type="number" id="one" oninput="call();return false" value="0"></td></tr>
+
+		</table></form>
+		<script>
+			function call()
+			{
+				let netsum=document.getElementById('amount').value;
+			console.log(netsum);
+			document.getElementById('netamount').textContent=netsum;
+			
+			let calculated=parseInt(document.getElementById("twothousand").value)*2000;
+			 calculated+=parseInt(document.getElementById("fivehundred").value)*500;
+			calculated+=parseInt(document.getElementById("twohundred").value)*200;
+			calculated+=parseInt(document.getElementById("hundred").value)*100;
+			calculated+=parseInt(document.getElementById("fifty").value)*50;
+			calculated+=parseInt(document.getElementById("twenty").value)*20;
+			calculated+=parseInt(document.getElementById("ten").value)*10;
+			calculated+=parseInt(document.getElementById("five").value)*5;
+			calculated+=parseInt(document.getElementById("two").value)*2;
+			calculated+=parseInt(document.getElementById("one").value);
+			document.getElementById('calc').textContent=calculated;
+			if(calculated<netsum)
+			{
+				document.getElementById('calc').style.color="red";
+				document.getElementById('calc').textContent=calculated;
+				document.getElementById('short').textContent="Shortage amount : "+(netsum-calculated);
+				document.getElementById('short').style.color="red";
+			}
+			else if(calculated==netsum)
+			{
+				document.getElementById('calc').style.color="green";
+				document.getElementById('calc').textContent=calculated;
+				document.getElementById('short').textContent="Amount Tally ";
+				document.getElementById('short').style.color="green";
+			}
+			else if(calculated>netsum)
+			{
+				document.getElementById('calc').style.color="green";
+				document.getElementById('calc').textContent="+"+calculated;
+				document.getElementById('short').textContent="Excess amount : "+(calculated-netsum);
+				document.getElementById('short').style.color="green";
+			}
+			}
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
